@@ -43,16 +43,30 @@ function playRound(computerSelection, playerSelection) {
              winner = "computer"
         }
     }
-    return console.log(winner)
+    if (winner == "draw") {
+        console.log("It's a draw!")
+    } else if (winner == "player") {
+        console.log("You win! " + playerSelection + " beats " + computerSelection + ".")
+    } else {
+        console.log("You lose. " + computerSelection + " beats " + playerSelection + ".")
+    }
+
 }
 
 
 
 
 
-let computerChocie = getComputerChoice()
-let playerChoice = getPlayerChoice()
-console.log("computer " + typeof(computerChocie))
-console.log("player: " + typeof(playerChoice))
-playRound(computerChocie, playerChoice)
 
+// console.log("computer " + typeof(computerChocie))
+// console.log("player: " + typeof(playerChoice))
+
+
+for (let i = 0; i < 5; i++) {
+    console.log(i)
+    let computerChocie = getComputerChoice()
+    let playerChoice = getPlayerChoice()
+    playRound(computerChocie, playerChoice)
+ }
+
+ 
