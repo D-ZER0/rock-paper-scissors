@@ -1,0 +1,19 @@
+.container {
+    padding: 24px;
+    background-color: red;
+    margin: 24px;
+    height: 50px;
+}
+
+#buttonContainer {
+    display:flex;
+    justify-content: space-around;
+}
+
+button {
+    border-style: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}

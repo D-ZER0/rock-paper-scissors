@@ -10,18 +10,36 @@ function getComputerChoice() {
     ]
     let n = getRandomInt(3)
     let choice = answers[n]
-    console.log(choice)
+    console.log("computer chose " + choice)
 
     return choice
 }
 
-function getPlayerChoice() {
-    return prompt("Rock, Paper, or scissors?").toLowerCase()
-}
+// function getPlayerChoice() {
+//     return prompt("Rock, Paper, or scissors?").toLowerCase()
+// }
+
+ // select buttons with class type "choice"
+ const options = document.querySelectorAll('.option');
+ const results = document.querySelector('#results');
+
+ console.log(options)
 
 
-function playRound(computerSelection, playerSelection) {
-    let winner = undefined
+// returns the id of the button which is clicked as a string
+
+
+ options.forEach(option => option.addEventListener("click", playRound)) 
+
+function getPlayerChoice(e) {
+    return e.target.id
+ }
+
+
+function playRound(e) {
+    let playerSelection = getPlayerChoice(e);
+    let computerSelection = getComputerChoice();
+    let winner = undefined;
     if (computerSelection == playerSelection) {
         winner = "draw"
     } else if (computerSelection == "rock") {
@@ -44,7 +62,12 @@ function playRound(computerSelection, playerSelection) {
         }
     }
     if (winner == "draw") {
-        console.log("It's a draw!")
+        // console.log("It's a draw!")
+        // results.innerHTML += "\n" + "It's a draw!";
+        let msg = document.createElement("p")
+        let text = document.createTextNode("It's a draw!")
+        msg.appendChild(text)
+        results.append(msg)
     } else if (winner == "player") {
         console.log("You win! " + playerSelection + " beats " + computerSelection + ".")
     } else {
@@ -62,11 +85,15 @@ function playRound(computerSelection, playerSelection) {
 // console.log("player: " + typeof(playerChoice))
 
 
-for (let i = 0; i < 5; i++) {
-    console.log(i)
-    let computerChocie = getComputerChoice()
-    let playerChoice = getPlayerChoice()
-    playRound(computerChocie, playerChoice)
- }
+// for (let i = 0; i < 5; i++) {
+//     console.log(i)
+//     let computerChocie = getComputerChoice()
+//     let playerChoice = getPlayerChoice()
+//     playRound(computerChocie, playerChoice)
+//  }
 
- 
+
+
+
+
+// choices.forEach(button => button.addEventListener("click", console.log("test")))
