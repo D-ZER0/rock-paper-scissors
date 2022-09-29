@@ -26,15 +26,28 @@ function getComputerChoice() {
  console.log(options)
 
 
+ let msg = document.createElement("p")
+ let text = document.createTextNode("Results go here")
+ msg.appendChild(text)
+ results.append(msg)
+
 // returns the id of the button which is clicked as a string
 
 
  options.forEach(option => option.addEventListener("click", playRound)) 
 
 function getPlayerChoice(e) {
-    return e.target.id
+    // results.append(msg)
+    while (results.firstChild) {
+        results.removeChild(results.firstChild);
+    }
+    
+    return e.target.id;
  }
 
+
+
+ 
 
 function playRound(e) {
     let playerSelection = getPlayerChoice(e);
@@ -62,16 +75,22 @@ function playRound(e) {
         }
     }
     if (winner == "draw") {
-        // console.log("It's a draw!")
-        // results.innerHTML += "\n" + "It's a draw!";
         let msg = document.createElement("p")
         let text = document.createTextNode("It's a draw!")
         msg.appendChild(text)
         results.append(msg)
     } else if (winner == "player") {
-        console.log("You win! " + playerSelection + " beats " + computerSelection + ".")
+        let msg = document.createElement("p")
+        let text = document.createTextNode("You win! " + playerSelection + " beats " + computerSelection + ".")
+        msg.appendChild(text)
+        results.append(msg)
     } else {
-        console.log("You lose. " + computerSelection + " beats " + playerSelection + ".")
+        let msg = document.createElement("p")
+        let text = document.createTextNode("You lose. " + computerSelection + " beats " + playerSelection + ".")
+        msg.appendChild(text)
+        results.append(msg)
+        
+        
     }
 
 }
