@@ -64,6 +64,27 @@ function updateScore() {
     cscore.appendChild(ctext);
     computerScore.appendChild(cscore);
 
+    if (computerPoints == 5){
+        while (results.firstChild) {
+            results.removeChild(results.firstChild);
+        }
+        let msg = document.createElement("p");
+        let text = document.createTextNode("Game Over.  Computer Wins.");
+        msg.appendChild(text);
+        results.append(msg);
+        options.forEach(option => option.removeEventListener("click", playRound));
+    }
+    else if (playerPoints == 5) {
+        while (results.firstChild) {
+            results.removeChild(results.firstChild);
+        }
+        let msg = document.createElement("p");
+        let text = document.createTextNode("Congratulations,  You Win!");
+        msg.appendChild(text);
+        results.append(msg);
+        options.forEach(option => option.removeEventListener("click", playRound));
+    }
+
 }
 
 
@@ -142,8 +163,7 @@ function playRound(e) {
    
     }
     updateScore()
-    console.log(playerPoints)
-    console.log(computerPoints) 
+    
 }
 
 
